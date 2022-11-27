@@ -8,7 +8,7 @@
 //    let userFromCookie = User.findbyField('email', emailInCookie);
 
 //    if(userFromCookie) {
-//        res.session.userLogged = userFromCookie;
+//        req.session.userLogged = userFromCookie;
 //    }
 
 //    if(req.session && req.session.userLogged) {

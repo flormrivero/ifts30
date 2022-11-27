@@ -12,16 +12,16 @@ module.exports = [
     body('password').notEmpty().isStrongPassword(),
     body('avatar').custom((value, {req}) => {
         let file = req.file;
-        let acceptedExtensions = ['jpg', 'png'];
+        let acceptedExtensions = ['.jpg', '.png'];
         
         if(!file) {
             throw new Error('Debes subir una imagen');
         } else {
             let fileExtension = path.extname(file.originalname)
-            if(acceptedExtensions.includes(fileExtension)){
+            if(!acceptedExtensions.includes(fileExtension)){
                 throw new Error('Las extensiones permitidas son jpg y png');
         }
     }
     return true;
-    })
+})
 ];

@@ -9,12 +9,13 @@ const controllers = {
     },
     processRegister : (req, res) => {
        const resultValidation = validationResult(req);
+
        if(resultValidation.errors.length > 0) {
             return res.render('register', {
-            errors: resultValidation.mapped(),
-            oldData : req.body,
-        });
-    }
+                errors: resultValidation.mapped(),
+                oldData : req.body,
+            });
+        }
     let userInDB = User.findByField('email', req.body.email)    
 
     if(userInDB) {
@@ -32,8 +33,7 @@ const controllers = {
         password: bcryptjs.hashSync(req.body.password, 10),
         avatar: req.file.filename
     }
-    let userCreated = User.create(userToCreate)
-        
+    User.create(userToCreate)
         return res.redirect('login')
     },
     login: (req, res) => {

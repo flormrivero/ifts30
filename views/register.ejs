@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+</head>
+<body>
+        <form action="/login" method="POST" enctype="multipart/form-data">
+          <p>
+          <div>
+            <label>Nombre y apellido:</label>
+            <input 
+            type="text" 
+            name="nombre"
+            class=" <%= locals.errors && errors.nombre ? 'is-invalid' : null %>"
+            value="<%= locals.oldData ? oldData.nombre : null %>">
+            <% if(locals.errors && errors.nombre) { %>
+              <%= errors.nombre.msg %>
+            <% } %>
+        </div>
+          </p>
+          <p>
+          <div>  
+            <label>Dirección:</label>
+            <input 
+              type="text" 
+              name="direccion" 
+              class=" <%= locals.errors && errors.direccion ? 'is-invalid' : null %>"
+              value="<%= locals.oldData ? oldData.direccion : null %>">
+            <% if(locals.errors && errors.direccion) { %>
+              <%= errors.direccion.msg %>
+            <% } %>
+        </div>
+          </p>
+          <p>
+            <label>Celular:</label>
+            <input 
+            type="number" 
+            name="celular" 
+            class=" <%= locals.errors && errors.celular ? 'is-invalid' : null %>"
+            value="<%= locals.oldData ? oldData.celular : null %>">
+            <% if(locals.errors && errors.celular) { %>
+              <%= errors.celular.msg %>
+            <% } %>
+          </p>
+          <p>
+            <label>Imagen:</label>
+            <input type="file" name="avatar"> 
+            <% if(locals.errors && errors.avatar) { %>
+              <%= errors.avatar.msg %>
+            <% } %>>
+          </p>
+
+          <p>
+            <label>E-mail:</label>
+            <input 
+            type="email" 
+            name="email"
+            class=" <%= locals.errors && errors.email ? 'is-invalid' : null %>"
+            value="<%= locals.oldData ? oldData.email : null %>">
+            <% if(locals.errors && errors.email) { %>
+              <%= errors.email.msg %>
+            <% } %>
+          </p>
+          <p>
+            <label>Contraseña:</label>
+            <input type="password" name="password">
+          </p>
+
+            <button type="reset" class="botonRegister">Borrar</button>
+            <button type="submit" class="botonRegister">Enviar</button>
+          </p>
+        </form>
+      </main>
+
+  </body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/profile" method="POST" class="formLogin" enctype="multipart/form-data">
+        <div class="login">
+          <p>
+            <label>Email:</label>
+            <input type="email" name="email" required>
+            <% if(locals.errors && errors.email) { %>
+              <%= errors.email.msg %>
+            <% } %>
+          </p>
+          <p>
+            <label>Contraseña:</label>
+            <input type="password" name="password" required>
+        
+          </p>
+          <p>
+            <label>
+              <input type="checkbox" name="recordar" value="recordar">Recordarme
+            </label>
+          </p>
+    
+          <p class="botoneslogin">
+            <button type="submit" class="botonLogin">Iniciar sesión</button>
+            <button type="reset" class="botonLogin"> Cancelar</button>
+          </p>
+        </div>
+      </form>    
+</body>
+</html>
+    

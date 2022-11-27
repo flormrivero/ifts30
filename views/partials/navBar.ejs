@@ -1,0 +1,21 @@
+<nav class="navBar">
+    <div >
+        <a href="/"><img src="/public/images/Logo IFTS 30.jpg" alt="logo"></a>
+    </div>
+    <div>
+        <% if (locals.isLogged) { %>
+        <i class="fa-solid fa-user" id="user"></i>
+        <img src="/images/avatars/<%= locals.userLogged.avatar %>" width="40" style="border-radius: 100%">
+        <a href="/userProfile"><%= locals.userLogged.fullName %></a>
+            <ul class="dropdown-menu">
+                <a href="/user/Profile">Mi perfil</a>
+                <a href="/user/logout">Cerrar sesión</a>
+            </ul>
+
+        <% } else { %>
+        <a href="/login/"><b>Iniciar sesión</b></a>
+        <a href="/register"><b>Registrarse</b></a>
+        <% } %>
+    </div>
+
+</nav>

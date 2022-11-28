@@ -16,7 +16,7 @@ const controllers = {
                 oldData : req.body,
             });
         }
-    let userInDB = User.findByField('email', req.body.email)    
+    let userInDB = User.findbyField('email', req.body.email)    
 
     if(userInDB) {
         return res.render('register', {
@@ -33,8 +33,8 @@ const controllers = {
         password: bcryptjs.hashSync(req.body.password, 10),
         avatar: req.file.filename
     }
-    User.create(userToCreate)
-        return res.redirect('/user/login')
+    let userCreate = User.create(userToCreate)
+        return res.redirect('login')
     },
     login: (req, res) => {
         return res.render ('login');
@@ -51,7 +51,7 @@ const controllers = {
                 if(req.body.recordar) {
                     res.cookie('userEmail', req.body.email, {maxAge: (1000 * 60) * 60})
                 }
-                return res.redirect('/user/profile')
+                return res.redirect('/profile')
             }
             return res.render('login', {
                 errors: {

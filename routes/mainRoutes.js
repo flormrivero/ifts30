@@ -14,6 +14,8 @@ router.get('/register', mainController.register);
 //LOGIN
 router.get('/login', mainController.login);
 
+router.post('/login', mainController.login);
+
 //PROFILE
 router.get('/userProfile', mainController.profile);
 

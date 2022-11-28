@@ -6,7 +6,7 @@ const cookieParser = require('cookie-parser');
 const publicFolderPath = path.resolve('public');
 const session = require('express-session');
 
-//const userLoggedMiddleware = require('./middleware/userLoggedMiddleware');
+
 
 app.use(express.static(publicFolderPath));
 app.use(express.urlencoded({ extended: false }));
@@ -22,12 +22,14 @@ app.use(session({
 //app.use(userLoggedMiddleware);
 app.use(cookieParser());
 
+//const userLoggedMiddleware = require('./middleware/userLoggedMiddleware');
+
 //Routers
 const mainRoutes = require('./routes/mainRoutes');
 const userRoutes = require('./routes/userRoutes');
 
 app.use('/', mainRoutes);
-app.use('/users', userRoutes);
+app.use('/user', userRoutes);
 
 //EJS
 app.set('view engine', 'ejs');

@@ -1,6 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-const { hasUncaughtExceptionCaptureCallback } = require('process');
 
 const mainRoutes = require('../routes/mainRoutes');
 

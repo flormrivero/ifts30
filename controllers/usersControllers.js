@@ -34,7 +34,7 @@ const controllers = {
         avatar: req.file.filename
     }
     User.create(userToCreate)
-        return res.redirect('login')
+        return res.redirect('/user/login')
     },
     login: (req, res) => {
         return res.render ('login');
@@ -48,10 +48,10 @@ const controllers = {
                 delete userToLogin.password;
                 req.session.userLogged = userToLogin;
 
-                if(req.body.remember_user) {
+                if(req.body.recordar) {
                     res.cookie('userEmail', req.body.email, {maxAge: (1000 * 60) * 60})
                 }
-                return res.redirect('userProfile')
+                return res.redirect('/user/profile')
             }
             return res.render('login', {
                 errors: {

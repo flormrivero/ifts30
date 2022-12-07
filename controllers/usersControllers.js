@@ -51,7 +51,7 @@ const controllers = {
                 if(req.body.recordar) {
                     res.cookie('userEmail', req.body.email, {maxAge: (1000 * 60) * 60})
                 }
-                return res.redirect('/profile')
+                return res.redirect('userProfile')
             }
             return res.render('login', {
                 errors: {

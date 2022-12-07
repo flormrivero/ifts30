@@ -9,7 +9,7 @@ module.exports = [
     body('email')
         .notEmpty().withMessage('Debes escribir un correo electrónico').bail()
         .isEmail().withMessage('Debes escribir un formato de correo válido'),
-    body('password').notEmpty().isStrongPassword(),
+    body('password').notEmpty().withMessage('Debes escribir una contraseña'),
     body('avatar').custom((value, {req}) => {
         let file = req.file;
 		let acceptedExtensions = ['.jpg', '.png', '.gif'];

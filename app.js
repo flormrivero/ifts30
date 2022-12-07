@@ -1,16 +1,22 @@
 
 const express = require('express');
-const app = express();
 const path = require('path');
 const cookieParser = require('cookie-parser');
-const publicFolderPath = path.resolve('public');
+const app = express();
 const session = require('express-session');
+const methodOverride = require('method-override');
 
 
+//middleware
+const userLoggedMiddleware = require('./middleware/userLoggedMiddleware');
 
-app.use(express.static(publicFolderPath));
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
+//Routers
+const mainRoutes = require('./routes/mainRoutes');
+const productsRoutes = require('./routes/productsRoutes')
+const userRoutes = require('./routes/userRoutes');
+
+//EJS
+app.set('view engine', 'ejs');
 
 //Session
 app.use(session({
@@ -19,24 +25,21 @@ app.use(session({
     saveUninitialized: false,
 }));
 
-//app.use(userLoggedMiddleware);
 app.use(cookieParser());
+app.use(userLoggedMiddleware);
 
-//const userLoggedMiddleware = require('./middleware/userLoggedMiddleware');
-
-//Routers
-const mainRoutes = require('./routes/mainRoutes');
-const userRoutes = require('./routes/userRoutes');
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(methodOverride('_method'));
+const publicFolderPath = path.resolve('public');
+app.use(express.static(publicFolderPath));
 
 app.use('/', mainRoutes);
 app.use('/user', userRoutes);
-
-//EJS
-app.set('view engine', 'ejs');
-
+app.use('/products', productsRoutes);
 
 //PUERTO
-const APP_PORT = process.env.PORT || 2008;
+const APP_PORT = process.env.PORT || 3040;
 app.listen(APP_PORT, () => {
     console.log('Servidor funcionando en puerto ' + APP_PORT)
 })

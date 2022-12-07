@@ -14,7 +14,6 @@
             <input 
             type="text" 
             name="nombre"
-            class=" <%= locals.errors && errors.nombre ? 'is-invalid' : null %>"
             value="<%= locals.oldData ? oldData.nombre : null %>">
             <% if(locals.errors && errors.nombre) { %>
               <%= errors.nombre.msg %>
@@ -27,7 +26,6 @@
             <input 
               type="text" 
               name="direccion" 
-              class=" <%= locals.errors && errors.direccion ? 'is-invalid' : null %>"
               value="<%= locals.oldData ? oldData.direccion : null %>">
             <% if(locals.errors && errors.direccion) { %>
               <%= errors.direccion.msg %>
@@ -39,7 +37,6 @@
             <input 
             type="number" 
             name="celular" 
-            class=" <%= locals.errors && errors.celular ? 'is-invalid' : null %>"
             value="<%= locals.oldData ? oldData.celular : null %>">
             <% if(locals.errors && errors.celular) { %>
               <%= errors.celular.msg %>
@@ -58,7 +55,6 @@
             <input 
             type="email" 
             name="email"
-            class=" <%= locals.errors && errors.email ? 'is-invalid' : null %>"
             value="<%= locals.oldData ? oldData.email : null %>">
             <% if(locals.errors && errors.email) { %>
               <%= errors.email.msg %>
@@ -66,7 +62,10 @@
           </p>
           <p>
             <label>Contraseña:</label>
-            <input type="password" name="password">
+            <input type="password" name="password" value="<%= locals.oldData ? oldData.password : null %>">>
+            <% if(locals.errors && errors.password) { %>
+              <%= errors.password.msg %>
+            <% } %>
           </p>
 
             <button type="reset" class="botonRegister">Borrar</button>

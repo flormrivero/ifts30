@@ -1,1 +1,11 @@
-[]
+[
+ {
+  "id": 1,
+  "nombre": "Florencia Rivero",
+  "direccion": "Estrada 791",
+  "celular": "11334324",
+  "email": "flormrivero@gmail.com",
+  "password": "$2a$10$JRJEq2YGlL3V946XHHY00O/Dg1JcbUeYClQNAcsxiPH5zryaG8L.i",
+  "avatar": "1669678835394.png"
+ }
+]
